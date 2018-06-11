@@ -41,6 +41,8 @@ namespace Intacct.SDK
 
         public string UserPassword;
 
+	    public string LocationId;
+
         public ICredentials Credentials;
 
         public ILogger Logger;

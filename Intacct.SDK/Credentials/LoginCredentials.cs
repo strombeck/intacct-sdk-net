@@ -36,6 +36,8 @@ namespace Intacct.SDK.Credentials
 
         public string Password;
 
+	    public string LocationId;
+
         public SenderCredentials SenderCredentials { get; set; }
 
         public LoginCredentials(ClientConfig config, SenderCredentials senderCreds)
@@ -106,6 +108,7 @@ namespace Intacct.SDK.Credentials
             this.UserId = config.UserId;
             this.Password = config.UserPassword;
             this.SenderCredentials = senderCreds;
+	        this.LocationId = config.LocationId;
         }
 
     }

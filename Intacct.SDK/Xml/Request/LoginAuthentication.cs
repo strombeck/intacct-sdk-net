@@ -65,11 +65,14 @@ namespace Intacct.SDK.Xml.Request
             }
         }
 
-        public LoginAuthentication(string userId, string companyId, string password)
+	    public string LocationId { get; set; }
+
+	    public LoginAuthentication(string userId, string companyId, string password, string locationId = null)
         {
             this.UserId = userId;
             this.CompanyId = companyId;
             this.Password = password;
+	        this.LocationId = locationId;
         }
 
         public void WriteXml(ref IaXmlWriter xml)
@@ -79,7 +82,11 @@ namespace Intacct.SDK.Xml.Request
             xml.WriteElementString("userid", this.UserId);
             xml.WriteElementString("companyid", this.CompanyId);
             xml.WriteElementString("password", this.Password);
-            xml.WriteEndElement(); // login
+	        if (!string.IsNullOrEmpty(this.LocationId))
+	        {
+		        xml.WriteElementString("locationid", this.LocationId);
+			}
+			xml.WriteEndElement(); // login
             xml.WriteEndElement(); // authentication
         }
     }
